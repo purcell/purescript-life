@@ -14,7 +14,6 @@ module Svg
 
 import Data.Int as Int
 import Halogen.HTML as HH
-import Halogen.HTML.Properties as HHP
 import DOM.HTML.Indexed
 
 -- Elements
@@ -43,24 +42,24 @@ viewBox = HH.attr (HH.AttrName "viewBox")
 
 
 width :: forall r i. Int -> HH.IProp (width :: Int | r) i
-width = HHP.width
+width v = HH.attrNS (HH.Namespace "svg") (HH.AttrName "width") (Int.toStringAs Int.decimal v)
 
 
-height :: forall r i. Int -> HH.IProp (height :: Int | r) i
-height = HHP.height
+height :: forall r i. Int -> HH.IProp (height ::Int | r) i
+height v = HH.attrNS (HH.Namespace "svg") (HH.AttrName "height") (Int.toStringAs Int.decimal v)
 
 
 x :: forall r i. Int -> HH.IProp (x :: Int | r) i
-x v = HH.attr (HH.AttrName "x") (Int.toStringAs Int.decimal v)
+x v = HH.attrNS (HH.Namespace "svg") (HH.AttrName "x") (Int.toStringAs Int.decimal v)
 
 
 y :: forall r i. Int -> HH.IProp (y :: Int | r) i
-y v = HH.attr (HH.AttrName "y") (Int.toStringAs Int.decimal v)
+y v = HH.attrNS (HH.Namespace "svg") (HH.AttrName "y") (Int.toStringAs Int.decimal v)
 
 
 stroke :: forall r i. ColourName -> HH.IProp (stroke :: ColourName | r) i
-stroke (ColourName n) = HH.attr (HH.AttrName "stroke") n
+stroke (ColourName n) = HH.attrNS (HH.Namespace "svg") (HH.AttrName "stroke") n
 
 
 fill :: forall r i. ColourName -> HH.IProp (fill :: ColourName | r) i
-fill (ColourName n) = HH.attr (HH.AttrName "fill") n
+fill (ColourName n) = HH.attrNS (HH.Namespace "svg") (HH.AttrName "fill") n

@@ -56,18 +56,17 @@ component =
            [ HH.text "Next generation"]
          ]
       -- FIXME
-      , Svg.svg [ HHP.width (50 * cellSize)
-                , HHP.height (50 * cellSize)
-                , Svg.viewBox "0 0 500 500"
-                ]
-                (Grid.flatten cellToSvg state.grid)
+      , HH.div [ HHP.class_ (HH.ClassName "grid-container") ]
+        [ Svg.svg
+          [Svg.viewBox "0 0 500 500"]
+          (Grid.flatten cellToSvg state.grid) ]
       ]
 
   cellToSvg pos cell =
     Svg.rect [ Svg.x (pos.x * cellSize)
              , Svg.y (pos.y * cellSize)
-             , HHP.width cellSize
-             , HHP.height cellSize
+             , Svg.width cellSize
+             , Svg.height cellSize
              , Svg.fill (case cell of
                             Alive -> (Svg.ColourName "black")
                             Dead -> (Svg.ColourName "white"))
