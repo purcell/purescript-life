@@ -1,17 +1,15 @@
 {
-  "name": "purescript-life",
-  "version": "1.0.0",
-  "description": "",
-  "main": "output/Main/index.js",
+  "private": true,
   "scripts": {
-    "build": "pulp build",
-    "test": "pulp test"
+    "build": "pulp build --to dist/app.js",
+    "watch": "pulp -w build --to dist/app.js",
+    "watch-fast": "webpack --mode=development --entry ./entry.js --output-path ./dist --output-filename app.js --progress --watch"
   },
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "bower": "^1.8.4",
     "pulp": "^12.3.0",
-    "purescript": "^0.12.0"
+    "purescript": "^0.12.0",
+    "purescript-psa": "^0.7.2",
+    "webpack": "^4.16.2",
+    "webpack-cli": "^3.1.0"
   }
 }
